@@ -2,13 +2,14 @@ package homework2.common;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 
 public class GeneralParserClassTest {
 
     @Test
     public void testIsKeywordReturnsTrueForActualKeyword() {
-        assert (GeneralParserClass.isKeyword("else") == true);
+        assertTrue (GeneralParserClass.isKeyword("else"));
     }
 
     @Test
