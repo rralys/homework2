@@ -35,10 +35,8 @@ public class JavaByteCodeParser {
                         Integer curCount = resMap.get(word);
                         curCount++;
                         resMap.put(word, curCount);
-                        /*res = true;*/
                     } else if (GeneralParserClass.isKeyword(word) && !resMap.containsKey(word)) {
                         resMap.put(word, 1);
-                        /*res = true;*/
                     }
 
                     word = "";
@@ -55,6 +53,7 @@ public class JavaByteCodeParser {
         }
 
         return resMap;
+
     }
 
     public static boolean saveParsedKeywords(String outName, HashMap<String, Integer> mapToSave) throws IOException {
@@ -98,9 +97,11 @@ public class JavaByteCodeParser {
         String res;
         res = String.format("%s %s\r\n", str, count.toString());
         return res;
+
     }
 
     public static Integer returnCounter(String keyword, HashMap<String, Integer> mapWithKeywords) {
         return mapWithKeywords.get(keyword);
+        
     }
 }
