@@ -9,7 +9,7 @@ public class GeneralParserClassTest {
 
     @Test
     public void testIsKeywordReturnsTrueForActualKeyword() {
-        assertTrue (GeneralParserClass.isKeyword("else"));
+        assertTrue(GeneralParserClass.isKeyword("else"));
     }
 
     @Test
@@ -26,8 +26,8 @@ public class GeneralParserClassTest {
 
     @Test
     public void testIsSeparatorReturnsFalseForNonSeparator() {
-        assertFalse (GeneralParserClass.isSeparator("non-sep") );
-        assertFalse (GeneralParserClass.isSeparator("\\") );
+        assertFalse(GeneralParserClass.isSeparator("non-sep") );
+        assertFalse(GeneralParserClass.isSeparator("\\") );
     }
 
 }
