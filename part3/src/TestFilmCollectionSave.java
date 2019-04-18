@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import static org.junit.Assert.assertEquals;
+
 public class TestFilmCollectionSave {
-    FilmsSet testCollection;
+    private FilmsSet testCollection;
     @Before
     public void prepareData() {
         Actor actor1 = new Actor("Hugh","Grant");
@@ -25,7 +27,7 @@ public class TestFilmCollectionSave {
     FilmsSetSave.filmsCollectionWrite(testCollection, "C:\\GIT\\RRalys\\homework2\\part3\\src\\writeoutput.txt");
     FilmsSet readCollection = FilmsSetSave.filmsCollectionRead("C:\\GIT\\RRalys\\homework2\\part3\\src\\writeoutput.txt");
 
-    assert(readCollection.equals(testCollection));
+    assertEquals(readCollection,testCollection);
 
 }
 
