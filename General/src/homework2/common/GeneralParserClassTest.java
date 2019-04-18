@@ -14,7 +14,7 @@ public class GeneralParserClassTest {
 
     @Test
     public void testIsKeywordReturnsFalseForNonKeyword() {
-        assertFalse (GeneralParserClass.isKeyword("someString"));
+        assertFalse(GeneralParserClass.isKeyword("someString"));
         assertFalse(GeneralParserClass.isKeyword("whileI"));
         assertFalse(GeneralParserClass.isKeyword("non-volatile"));
     }
