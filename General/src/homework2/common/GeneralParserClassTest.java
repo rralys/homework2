@@ -21,7 +21,7 @@ public class GeneralParserClassTest {
 
     @Test
     public void testIsSeparatorReturnsTrueForSeparator() {
-        assert (GeneralParserClass.isSeparator("<") == true);
+        assertTrue(GeneralParserClass.isSeparator("<"));
     }
 
     @Test
