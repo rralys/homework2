@@ -1,11 +1,11 @@
 import java.io.Serializable;
 import java.util.Objects;
 
-public class actorClass implements Serializable {
+public class Actor implements Serializable {
     private String name;
     private String lastName;
 
-    public actorClass(String name, String lastName) {
+    public Actor(String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
     }
@@ -36,7 +36,7 @@ public class actorClass implements Serializable {
         } else if (obj == null || obj.getClass() != getClass()) {
             res = false;
         } else {
-            actorClass curActor = (actorClass) obj;
+            Actor curActor = (Actor) obj;
             res = curActor.getActor().equals(getActor());
         }
 

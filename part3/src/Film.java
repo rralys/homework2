@@ -3,11 +3,11 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class filmClass implements Serializable {
+public class Film implements Serializable {
     private String filmName;
-    private Set<actorClass> actorsList = new LinkedHashSet<actorClass>();
+    private Set<Actor> actorsList = new LinkedHashSet<Actor>();
 
-    public filmClass(String film, Set<actorClass> actors) {
+    public Film(String film, Set<Actor> actors) {
         this.filmName = film;
         this.actorsList = actors;
     }
@@ -20,15 +20,15 @@ public class filmClass implements Serializable {
         return filmName;
     }
 
-    public Set<actorClass> getActorsList() {
+    public Set<Actor> getActorsList() {
         return actorsList;
     }
 
-    public void addActor(actorClass actor) {
+    public void addActor(Actor actor) {
         actorsList.add(actor);
     }
 
-    public void removeActor(actorClass actor) {
+    public void removeActor(Actor actor) {
         actorsList.remove(actor);
     }
 
@@ -41,7 +41,7 @@ public class filmClass implements Serializable {
         } else if (obj == null || obj.getClass() != getClass()) {
             res = false;
         } else {
-            filmClass curObj = (filmClass) obj;
+            Film curObj = (Film) obj;
             res = curObj.getFilm().equals(filmName) && curObj.getActorsList().equals(actorsList);
         }
 

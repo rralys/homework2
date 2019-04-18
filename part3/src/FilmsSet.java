@@ -3,11 +3,11 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class filmsCollection implements Serializable {
+public class FilmsSet implements Serializable {
     private String collectionName;
-    private Set<filmClass> collection = new LinkedHashSet<>();
+    private Set<Film> collection = new LinkedHashSet<>();
 
-    public filmsCollection(String name, Set<filmClass> collection) {
+    public FilmsSet(String name, Set<Film> collection) {
         this.collectionName = name;
         this.collection = collection;
     }
@@ -16,15 +16,15 @@ public class filmsCollection implements Serializable {
         collectionName = name;
     }
 
-    public void setCollection(Set<filmClass> collection) {
+    public void setCollection(Set<Film> collection) {
         this.collection = collection;
     }
 
-    public void addFilm(filmClass film) {
+    public void addFilm(Film film) {
         collection.add(film);
     }
 
-    public void removeFilm(filmClass film) {
+    public void removeFilm(Film film) {
         collection.remove(film);
     }
 
@@ -36,8 +36,8 @@ public class filmsCollection implements Serializable {
         collectionName = newName;
     }
 
-    public Set<filmClass> getCollection() {
-        Set<filmClass> collectionCopy;
+    public Set<Film> getCollection() {
+        Set<Film> collectionCopy;
         collectionCopy = collection;
         return collectionCopy;
     }
@@ -51,7 +51,7 @@ public class filmsCollection implements Serializable {
         } else if (obj == null || obj.getClass() != getClass()) {
             res = false;
         } else {
-            filmsCollection curObj = (filmsCollection) obj;
+            FilmsSet curObj = (FilmsSet) obj;
             res = curObj.getCollection().equals(collection) && curObj.getCollectionName().equals(collectionName);
         }
 
