@@ -53,7 +53,6 @@ public class JavaByteCodeParser {
     }
 
     public static boolean saveParsedKeywords(String outName, Map<String, Integer> mapToSave) throws IOException {
-        boolean res = false;
         FileOutputStream out = null;
 
         if (mapToSave.isEmpty()) {
@@ -69,7 +68,6 @@ public class JavaByteCodeParser {
                 String keywordCount = toString(keyword, counter);
                 byte[] keywordCountArray = keywordCount.getBytes();
                 out.write(keywordCountArray);
-                res = true;
             }
 
         } catch (IOException e) {
@@ -80,7 +78,7 @@ public class JavaByteCodeParser {
             }
         }
 
-        return res;
+        return true;
 
     }
 

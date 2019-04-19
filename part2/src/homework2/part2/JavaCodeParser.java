@@ -18,13 +18,13 @@ public class JavaCodeParser {
         try {
 
             in = new FileReader(inFile);
-            int c;
+            int currChar;
             char ch;
             String curCh = "";
             String word = "";
 
-            while ((c = in.read()) != -1) {
-                ch = (char) c;
+            while ((currChar = in.read()) != -1) {
+                ch = (char) currChar;
                 curCh = String.valueOf(ch);
                 if (!GeneralParserClass.isSeparator(curCh)) {
                     word = word.concat(curCh);
@@ -54,7 +54,6 @@ public class JavaCodeParser {
     }
 
     public static boolean saveParsedKeywords(String outName, Map<String, Integer> mapToSave) throws IOException {
-        boolean res = false;
         FileWriter out = null;
 
         if (mapToSave.isEmpty()) {
@@ -71,7 +70,6 @@ public class JavaCodeParser {
                 char[] keywordCountArray = new char[keywordCount.length()];
                 keywordCount.getChars(0, keywordCount.length() - 1, keywordCountArray, 0);
                 out.write(keywordCountArray);
-                res = true;
             }
 
         } catch (FileNotFoundException e) {
@@ -84,7 +82,7 @@ public class JavaCodeParser {
             }
         }
 
-        return res;
+        return true;
 
     }
 

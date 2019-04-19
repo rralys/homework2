@@ -7,7 +7,7 @@ for 1
 throws 2
 while 1
 int 1
-boolean 2
+boolean 1
 public 5
 else 2
 char 2
