@@ -25,27 +25,27 @@ public class JavaByteCodeParserTest {
 
     @Test
     public void testCollectKeywordsReturnsTrueForJavaFile() throws IOException {
-        assertTrue (!JavaByteCodeParser.collectKeywords("C:\\GIT\\RRalys\\homework2\\part1\\src\\homework2\\part1\\JavaByteCodeParser.java").isEmpty());
+        assertFalse(JavaByteCodeParser.collectKeywords("C:\\GIT\\RRalys\\homework2\\part1\\src\\homework2\\part1\\JavaByteCodeParser.java").isEmpty());
     }
 
     @Test
     public void testSaveParsedKeywordsReturnsTrueForJavaFile() throws IOException {
-        assertTrue (data.saveParsedKeywords("C:\\GIT\\RRalys\\homework2\\part1\\src\\homework2\\part1\\testFile.txt", savedMap));
+        assertTrue(data.saveParsedKeywords("C:\\GIT\\RRalys\\homework2\\part1\\src\\homework2\\part1\\testFile.txt", savedMap));
     }
 
     @Test
     public void testReturnCounterReturnsCorrectCounterForExistingKeyword() {
-        assert (data.returnCounter("static", savedMap) == 4);
+        assertSame(data.returnCounter("static", savedMap) ,4);
     }
 
     @Test
     public void testReturnCounterReturnsNullForNonExistingKeyword() {
-        assertNull (data.returnCounter("volitile",savedMap1));
+        assertNull(data.returnCounter("volitile",savedMap1));
     }
 
     @Test
     public void testCollectKeywordsReturnsFalseForNonJavaFile() throws IOException {
-        assertFalse(!JavaByteCodeParser.collectKeywords("C:\\GIT\\RRalys\\homework2\\part1\\src\\homework2\\part1\\nonJavaFile.txt").isEmpty());
+        assertTrue(JavaByteCodeParser.collectKeywords("C:\\GIT\\RRalys\\homework2\\part1\\src\\homework2\\part1\\nonJavaFile.txt").isEmpty());
     }
 
     @Test

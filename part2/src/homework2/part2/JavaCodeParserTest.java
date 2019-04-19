@@ -24,7 +24,7 @@ public class JavaCodeParserTest {
 
     @Test
     public void testCollectKeywordsReturnsTrueForJavaFile() throws IOException {
-        assertTrue(!savedMap.isEmpty());
+        assertFalse(savedMap.isEmpty());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class JavaCodeParserTest {
 
     @Test
     public void testReturnCounterReturnsCorrectCounterForExistingKeyword() {
-        assert(data.returnCounter("catch", savedMap) == 4);
+        assertSame(data.returnCounter("catch", savedMap), 4);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class JavaCodeParserTest {
 
     @Test
     public void testSaveCollectKeywordsReturnsFalseForNonJavaFile() throws IOException {
-        assertFalse(!savedMap1.isEmpty());
+        assertTrue(savedMap1.isEmpty());
     }
 
     @Test

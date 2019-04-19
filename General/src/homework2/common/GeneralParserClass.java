@@ -1,34 +1,93 @@
 package homework2.common;
 
-public class GeneralParserClass {
-    public static final String[] keywords = new String[]{"abstract", "continue", "for", "new", "switch", "assert", "default",
-            "goto", "package", "synchronized", "boolean", "do", "if", "private", "this", "break", "double",
-            "implements", "protected", "throw", "byte", "else", "import", "public", "throws", "case", "enum",
-            "instanceof", "return", "transient", "catch", "extends", "int", "short", "try", "char", "final",
-            "interface", "static", "void", "class", "finally", "long", "strictfp", "volatile", "const", "float", "native", "super", "while"};
+import java.util.ArrayList;
+import java.util.List;
 
-    private static final String[] separators = new String[] {"{", "}", "(", ")", "<", ">", " ", ";", ":", ",", "=", "\r\n", "\n"};
+public class GeneralParserClass {
+
+    private static final List<String> keywordsList;
+    private static final List<String> separatorsList;
+
+    static {
+        keywordsList = new ArrayList<>() {
+            {
+                add("abstract");
+                add("continue");
+                add("for");
+                add("new");
+                add("switch");
+                add("assert");
+                add("default");
+                add("goto");
+                add("package");
+                add("synchronized");
+                add("boolean");
+                add("do");
+                add("if");
+                add("private");
+                add("this");
+                add("break");
+                add("double");
+                add("implements");
+                add("protected");
+                add("throw");
+                add("byte");
+                add("else");
+                add("import");
+                add("public");
+                add("throws");
+                add("case");
+                add("enum");
+                add("instanceof");
+                add("return");
+                add("transient");
+                add("catch");
+                add("extends");
+                add("int");
+                add("short");
+                add("try");
+                add("char");
+                add("final");
+                add("interface");
+                add("static");
+                add("void");
+                add("class");
+                add("finally");
+                add("long");
+                add("strictfp");
+                add("volatile");
+                add("const");
+                add("float");
+                add("native");
+                add("super");
+                add("while");
+            }
+        };
+
+        separatorsList = new ArrayList<>() {
+            {
+                add("}");
+                add("(");
+                add(")");
+                add("<");
+                add(">");
+                add(" ");
+                add(";");
+                add(":");
+                add(",");
+                add("=");
+                add("\r\n");
+                add("\n");
+            }
+        };
+    }
 
     public static boolean isKeyword(String str) {
-
-        for (String keyword : keywords) {
-            if (str.equals(keyword)) {
-                return true;
-            }
-        }
-
-        return false;
-
+        return keywordsList.contains(str);
     }
 
     public static boolean isSeparator(String str) {
-
-        for (String sep : separators) {
-            if (str.equals(sep)) {
-                return true;
-            }
-        }
-
-        return false;
+        return separatorsList.contains(str);
     }
+
 }
