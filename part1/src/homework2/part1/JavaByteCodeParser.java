@@ -6,27 +6,24 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class JavaByteCodeParser {
 
-    public JavaByteCodeParser() {
-
-    }
-
-    public static HashMap<String, Integer> collectKeywords(String inFile) throws IOException {
-        HashMap<String, Integer> resMap = new HashMap<String, Integer>();
+    public static Map<String, Integer> collectKeywords(String inFile) throws IOException {
+        Map<String, Integer> resMap = new HashMap<String, Integer>();
         FileInputStream in = null;
 
         try {
 
             in = new FileInputStream(inFile);
-            int c;
+            int currentChar;
             char ch;
             String curCh = "";
             String word = "";
 
-            while ((c = in.read()) != -1) {
-                ch = (char) c;
+            while ((currentChar = in.read()) != -1) {
+                ch = (char) currentChar;
                 curCh = String.valueOf(ch);
                 if (!GeneralParserClass.isSeparator(curCh)) {
                     word = word.concat(curCh);
@@ -45,8 +42,7 @@ public class JavaByteCodeParser {
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
-        }
-        finally {
+        } finally {
             if (in != null) {
                 in.close();
             }
@@ -56,7 +52,7 @@ public class JavaByteCodeParser {
 
     }
 
-    public static boolean saveParsedKeywords(String outName, HashMap<String, Integer> mapToSave) throws IOException {
+    public static boolean saveParsedKeywords(String outName, Map<String, Integer> mapToSave) throws IOException {
         boolean res = false;
         FileOutputStream out = null;
 
@@ -68,17 +64,12 @@ public class JavaByteCodeParser {
         try {
             out = new FileOutputStream(outName);
 
-            for (String keyword : GeneralParserClass.keywords) {
+            for (String keyword : mapToSave.keySet()) {
                 Integer counter = mapToSave.get(keyword);
-                if (counter == null) {
-                    continue;
-                }
-                if (counter > 0) {
-                    String keywordCount = toString(keyword, counter);
-                    byte[] keywordCountArray = keywordCount.getBytes();
-                    out.write(keywordCountArray);
-                    res = true;
-                }
+                String keywordCount = toString(keyword, counter);
+                byte[] keywordCountArray = keywordCount.getBytes();
+                out.write(keywordCountArray);
+                res = true;
             }
 
         } catch (IOException e) {
@@ -100,8 +91,8 @@ public class JavaByteCodeParser {
 
     }
 
-    public static Integer returnCounter(String keyword, HashMap<String, Integer> mapWithKeywords) {
+    public static Integer returnCounter(String keyword, Map<String, Integer> mapWithKeywords) {
         return mapWithKeywords.get(keyword);
-        
+
     }
 }

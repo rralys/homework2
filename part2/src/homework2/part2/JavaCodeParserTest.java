@@ -4,15 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import static junit.framework.TestCase.*;
 
 public class JavaCodeParserTest {
     JavaCodeParser data;
     JavaCodeParser data1;
-    HashMap<String, Integer> savedMap;
-    HashMap<String, Integer> savedMap1;
+    Map<String, Integer> savedMap;
+    Map<String, Integer> savedMap1;
 
     @Before
     public void prepareData() throws IOException {

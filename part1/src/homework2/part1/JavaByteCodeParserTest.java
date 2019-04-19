@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
 public class JavaByteCodeParserTest {
     JavaByteCodeParser data;
     JavaByteCodeParser data1;
-    HashMap<String, Integer> savedMap;
-    HashMap<String, Integer> savedMap1;
+    Map<String, Integer> savedMap;
+    Map<String, Integer> savedMap1;
 
     @Before
     public void prepareData() throws IOException {
@@ -35,7 +35,7 @@ public class JavaByteCodeParserTest {
 
     @Test
     public void testReturnCounterReturnsCorrectCounterForExistingKeyword() {
-        assert (data.returnCounter("static", savedMap) == 5);
+        assert (data.returnCounter("static", savedMap) == 4);
     }
 
     @Test

@@ -10,29 +10,25 @@ public class GeneralParserClass {
     private static final String[] separators = new String[] {"{", "}", "(", ")", "<", ">", " ", ";", ":", ",", "=", "\r\n", "\n"};
 
     public static boolean isKeyword(String str) {
-        boolean res = false;
 
         for (String keyword : keywords) {
             if (str.equals(keyword)) {
-                res = true;
-                break;
+                return true;
             }
         }
 
-        return res;
+        return false;
 
     }
 
     public static boolean isSeparator(String str) {
-        boolean res = false;
 
         for (String sep : separators) {
             if (str.equals(sep)) {
-                res = true;
-                break;
+                return true;
             }
         }
 
-        return res;
+        return false;
     }
 }

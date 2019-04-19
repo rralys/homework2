@@ -7,16 +7,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class JavaCodeParser {
 
-    public JavaCodeParser() {
-
-    }
-
-
-    public static HashMap<String, Integer> collectKeywords(String inFile) throws IOException {
-        HashMap<String, Integer> resMap = new HashMap<String, Integer>();
+    public static Map<String, Integer> collectKeywords(String inFile) throws IOException {
+        Map<String, Integer> resMap = new HashMap<String, Integer>();
         FileReader in = null;
 
         try {
@@ -56,7 +52,8 @@ public class JavaCodeParser {
 
         return resMap;
     }
-    public static boolean saveParsedKeywords(String outName, HashMap<String, Integer> mapToSave) throws IOException {
+
+    public static boolean saveParsedKeywords(String outName, Map<String, Integer> mapToSave) throws IOException {
         boolean res = false;
         FileWriter out = null;
 
@@ -68,18 +65,13 @@ public class JavaCodeParser {
         try {
             out = new FileWriter(outName);
 
-            for (String keyword : GeneralParserClass.keywords) {
+            for (String keyword : mapToSave.keySet()) {
                 Integer counter = mapToSave.get(keyword);
-                if (counter == null) {
-                    continue;
-                }
-                if (counter > 0) {
-                    String keywordCount = toString(keyword, counter);
-                    char[] keywordCountArray = new char[keywordCount.length()];
-                    keywordCount.getChars(0, keywordCount.length() - 1, keywordCountArray, 0);
-                    out.write(keywordCountArray);
-                    res = true;
-                }
+                String keywordCount = toString(keyword, counter);
+                char[] keywordCountArray = new char[keywordCount.length()];
+                keywordCount.getChars(0, keywordCount.length() - 1, keywordCountArray, 0);
+                out.write(keywordCountArray);
+                res = true;
             }
 
         } catch (FileNotFoundException e) {
@@ -101,7 +93,7 @@ public class JavaCodeParser {
         return res;
     }
 
-    public static Integer returnCounter(String keyword, HashMap<String, Integer> mapWithKeywords) {
+    public static Integer returnCounter(String keyword, Map<String, Integer> mapWithKeywords) {
         return mapWithKeywords.get(keyword);
     }
 
